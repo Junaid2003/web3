@@ -386,6 +386,49 @@ contract FinancialContract {
 }
 //global finance
 
+//fitness reward
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract fitness {
+    struct activity {
+        address userid;
+        string name ;
+        uint points;
+        uint time;
+    }
+
+    activity[] activity_array;
+    mapping(string => uint) public act_score;
+    mapping(uint => activity) public activity_list;
+    uint a_points = 0;
+    event New_activity(address useraddress,string activityname);
+
+    function register_activity(string memory name, uint score) public returns(string memory){
+        act_score[name] = score;
+        return "Activity Registered";
+    }
+
+    function add_activity(string memory a_name,uint a_time)public returns(string memory) {
+        a_points = act_score[a_name];
+        activity_array.push(activity({userid: msg.sender, name:a_name, points:a_points, time:a_time}));
+        uint i= activity_array.length-1;
+        activity_list[i]=activity({userid: msg.sender, name:a_name, points:a_points, time:a_time});
+        emit New_activity(msg.sender, a_name);
+        return "added successfully";  
+    }
+
+    function getPoints(address user_id) public view returns(uint){
+        uint temp = 0;
+        for(uint j = 0; j<=activity_array.length-1; j++){
+            address add = activity_list[j].userid;
+            if(add == user_id){
+                temp = temp + activity_list[j].points;
+            }
+        }
+        return temp;
+    }
+}
 
 
 
