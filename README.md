@@ -68,7 +68,7 @@ output = pd.concat([data, stats_df], axis=1)
 Reshaping hierarchical data
 import pandas as pd 
 import numpy as np 
-# Create a MultiIndex DataFrame (Hierarchical Data) 
+Create a MultiIndex DataFrame (Hierarchical Data) 
 arrays = [ 
 ['A', 'A', 'A', 'B', 'B', 'B'], 
 ['X', 'Y', 'Z', 'X', 'Y', 'Z'] 
@@ -81,23 +81,22 @@ data = pd.DataFrame({
 print("Original DataFrame (Hierarchical Data):") 
 print(data) 
 print("\n") 
-# 
 Stack Operation 
-# Stack the DataFrame (Convert Columns to Rows) 
+ Stack the DataFrame (Convert Columns to Rows) 
 stacked = data.stack() 
 print("Stacked DataFrame:") 
 print(stacked) 
 print("\n") 
-# 
+ 
 Unstack Operation 
-# Unstack the DataFrame (Convert Rows to Columns) 
+ Unstack the DataFrame (Convert Rows to Columns) 
 unstacked = stacked.unstack() 
 print("Unstacked DataFrame:") 
 print(unstacked) 
 print("\n") 
-# 
+
 Pivoting Data 
-# Create DataFrame for Pivoting 
+Create DataFrame for Pivoting 
 data_for_pivot = pd.DataFrame({ 
 'Date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02'], 
 'City': ['New York', 'Los Angeles', 'New York', 'Los Angeles'], 
@@ -106,14 +105,14 @@ data_for_pivot = pd.DataFrame({
 print("Original Data for Pivoting:") 
 print(data_for_pivot) 
 print("\n") 
-# Pivot the DataFrame to make cities as columns and dates as rows 
+ Pivot the DataFrame to make cities as columns and dates as rows 
 pivoted_data = data_for_pivot.pivot(index='Date', columns='City', values='Temperature') 
 print("Pivoted DataFrame (Cities as Columns):") 
 print(pivoted_data) 
 print("\n") 
-# 
+
 Pivot Table Data 
-# Create DataFrame for Pivot Table 
+ Create DataFrame for Pivot Table 
 data_for_pivot_table = pd.DataFrame({ 
 'Date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02'], 
 'City': ['New York', 'Los Angeles', 'New York', 'Los Angeles'], 
@@ -123,7 +122,7 @@ data_for_pivot_table = pd.DataFrame({
 print("Original Data for Pivot Table:") 
 print(data_for_pivot_table) 
 print("\n") 
-# Pivot Table to calculate the average temperature and humidity per city and date 
+ Pivot Table to calculate the average temperature and humidity per city and date 
 pivot_table_data = data_for_pivot_table.pivot_table( 
 index='Date', 
 columns='City', 
